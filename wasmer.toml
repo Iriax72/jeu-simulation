@@ -13,4 +13,4 @@ module = "serveur-statique"
 runner = "https://webc.org/wasmer/staticserver"
 
 [fs]
-public = "bin/Release/net10.0/browser-wasm/publish/wwwroot"
+public = "bin/Release/net10.0/publish/wwwroot"
