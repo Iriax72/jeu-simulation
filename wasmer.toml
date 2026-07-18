@@ -1,0 +1,13 @@
+[package]
+name = "Iriax72/jeu-simulation"
+version = "0.1.0"
+description = "Mon jeu en C# avec webAssembly"
+
+[[module]]
+name = "moteur"
+source = "bin/Debug/net10.0/wasi-wasm/jeu-simulation.wasm"
+abi = "wasi"
+
+[[commands]]
+name = "run"
+module = "moteur"

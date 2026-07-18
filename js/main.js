@@ -9,7 +9,13 @@ const createCityhallBtn = document.querySelector('#cityhall-btn');
 
 // Fonction utilitaires
 function getState() {
-    return JSON.parse(Game.GetState());
+    state = {
+        wood: Game.Wood,
+        meal: Game.Meal,
+        farms: Game.Farms,
+        hasCityhall: Game.HasCityhall
+    }
+    return state;
 }
 
 function drawScreen() {
