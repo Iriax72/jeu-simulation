@@ -1,6 +1,3 @@
-// Imports
-import {Game} from '../cs/main.cs';
-
 // Références DOM
 const canvas = document.querySelector('#game-canvas');
 const searchWoodBtn     = document.querySelector('#search-wood-btn');
@@ -8,19 +5,18 @@ const createfarmsBtn    = document.querySelector('#farms-btn');
 const createCityhallBtn = document.querySelector('#cityhall-btn');
 
 // Fonction utilitaires
-function getState() {
-    state = {
-        wood: Game.Wood,
-        meal: Game.Meal,
-        farms: Game.Farms,
-        hasCityhall: Game.HasCityhall
-    }
-    return state;
+async function execCs(functionName) {
+    return await DotNet.invokeMethodAsync('jeu-simulation', functionName);
 }
 
-function drawScreen() {
+async function getState() {
+    const state = await execCs('GetState');
+    return JSON.parse(await state);
+}
+
+async function drawScreen() {
     const ctx = canvas.getContext('2d');
-    const state = getState();
+    const state = await getState();
 
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
     ctx.font = '20px Arial';
@@ -40,20 +36,20 @@ function drawScreen() {
 }
 
 // Initialisation
-Game.Init();
+await execCs('Init');
 
 // EventListeners
-searchWoodBtn.addEventListener('click', () => {
-    Game.GetRessources();
-    drawScreen();
+searchWoodBtn.addEventListener('click', async () => {
+    await execCs('GetRessources');
+    await drawScreen();
 });
 
-createfarmsBtn.addEventListener('click', () => {
-    Game.Createfarms();
-    drawScreen();
+createfarmsBtn.addEventListener('click', async () => {
+    await execCs('CreateFarms');
+    await drawScreen();
 });
 
-createCityhallBtn.addEventListener('click', () => {
-    Game.CreateCityhall();
-    drawScreen();
+createCityhallBtn.addEventListener('click', async () => {
+    await execCs('CreateCityhall');
+    await drawScreen();
 });

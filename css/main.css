@@ -1,4 +1,10 @@
-#village-canvas {
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+#game-canvas {
     width: 100vw;
     height: 80vh;
 }
