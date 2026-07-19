@@ -6,7 +6,7 @@ public static class Game
 {
     public static void Main()
     {
-
+        Init();
     }
 
     // Ressources
@@ -28,8 +28,7 @@ public static class Game
     }
 
     // Initialisation
-    [JSInvokable]
-    public static void Init()
+    private static void Init()
     {
         Wood = 0;
         Meal = 0;
