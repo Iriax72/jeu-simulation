@@ -1,3 +1,4 @@
 # Ignorer les fichiers de compilation et de cache .NET
 bin/
 obj/
+node_modules/
