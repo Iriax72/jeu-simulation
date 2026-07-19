@@ -35,9 +35,6 @@ async function drawScreen() {
     }
 }
 
-// Initialisation
-await execCs('Init');
-
 // EventListeners
 searchWoodBtn.addEventListener('click', async () => {
     await execCs('GetRessources');
